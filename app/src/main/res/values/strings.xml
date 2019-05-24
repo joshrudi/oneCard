@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">oneCard</string>
+    <string name="title_activity_child_dashboard">childDashboard</string>
+</resources>
