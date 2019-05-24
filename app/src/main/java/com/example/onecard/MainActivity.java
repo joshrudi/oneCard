@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             OkHttpClient client = new OkHttpClient();
 
             MediaType mediaType = MediaType.parse("application/json");
-            RequestBody body = RequestBody.create(mediaType, "{\n\t\"email\": \"tester@tester.com\",\n\t\"password\": \"password\"\n}");
+            RequestBody body = RequestBody.create(mediaType, "{\n\t\"email\": \"jon@tester.com\",\n\t\"password\": \"password\"\n}");
             Request request = new Request.Builder()
                     .url("http://kidfin.thinger.appspot.com/login")
                     .post(body)
