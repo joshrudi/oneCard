@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         private Context mContext;  // context from main activity
 
         protected String doInBackground(String... strings) {  // requests authdata
-
             OkHttpClient client = new OkHttpClient();
 
             MediaType mediaType = MediaType.parse("application/json");
