@@ -33,6 +33,7 @@ public class transactionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Transactions");
         setContentView(R.layout.activity_transaction);
 
         adapter=new ArrayAdapter<String>(this,
@@ -69,7 +70,7 @@ public class transactionActivity extends AppCompatActivity {
 
         if (size > 20) size = 20;
 
-        for (int i = 0; i < size; i++) {
+        for (int i = size-1; i >= 0; i--) {
 
             // creates list
             try {
@@ -113,5 +114,11 @@ public class transactionActivity extends AppCompatActivity {
         } else {
             return adapter;
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

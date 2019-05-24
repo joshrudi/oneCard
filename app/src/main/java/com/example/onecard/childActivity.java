@@ -57,6 +57,16 @@ public class childActivity extends AppCompatActivity {
             }
         });
 
+        // setup view all restrictions button
+        TextView var = findViewById(R.id.viewAllButton2);
+        var.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(childActivity.this, restrictionsActivity.class);
+                childActivity.this.startActivity(nextIntent);
+            }
+        });
+
         // grabs authdata from memory
         String json = PreferenceManager.getDefaultSharedPreferences(this).getString("AuthData", "NULL");
 
@@ -95,7 +105,8 @@ public class childActivity extends AppCompatActivity {
         // creates list
         try {
             JSONArray transShort = jsonTransactionObject.getJSONArray("transactions");
-            String transShortString = transShort.getString(0);
+            int arrayLength = transShort.length();
+            String transShortString = transShort.getString(arrayLength-1);
 
             JSONObject jsonTransactionShortObject;
 
@@ -116,7 +127,7 @@ public class childActivity extends AppCompatActivity {
             itemOne.setText(jsonTransactionShortObject.getString("merchant"));
             costOne.setText("$" + jsonTransactionShortObject.getString("amount"));
 
-            transShortString = transShort.getString(1);
+            transShortString = transShort.getString(arrayLength-2);
 
             // makes a json object out of the json string
             try {
@@ -128,7 +139,7 @@ public class childActivity extends AppCompatActivity {
             itemTwo.setText(jsonTransactionShortObject.getString("merchant"));
             costTwo.setText("$" + jsonTransactionShortObject.getString("amount"));
 
-            transShortString = transShort.getString(2);
+            transShortString = transShort.getString(arrayLength-3);
 
             // makes a json object out of the json string
             try {
@@ -142,9 +153,17 @@ public class childActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             TextView itemOne = findViewById(R.id.childSpendingItem1);
+            TextView itemTwo = findViewById(R.id.childSpendingItem2);
+            TextView itemThree = findViewById(R.id.childSpendingItem3);
             TextView costOne = findViewById(R.id.childCostItem1);
+            TextView costTwo = findViewById(R.id.childCostItem2);
+            TextView costThree = findViewById(R.id.childCostItem3);
             itemOne.setText("NA");
+            itemTwo.setText("NA");
+            itemThree.setText("NA");
             costOne.setText("$0");
+            costTwo.setText("$0");
+            costThree.setText("$0");
         }
     }
 
